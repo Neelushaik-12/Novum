@@ -1,4 +1,0 @@
-Jane Smith
-Data Analyst
-Experience: 4 years analyzing transactional data, SQL expert, Excel pivot tables, generated dashboards using Tableau, scripting in Python for data cleaning.
-Skills: sql, excel, tableau, python
