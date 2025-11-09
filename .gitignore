@@ -1,0 +1,57 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+*.egg
+*.manifest
+*.spec
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+
+# Node.js artifacts
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.turbo/
+frontend/.cache/
+
+# Logs and coverage
+*.log
+logs/
+coverage/
+*.coverage
+*.cover
+*.py,cover
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Credentials & secrets
+credentials/
+titanium-portal-476620-s9-eb28df484159.json
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.token
+*.secret
+*.env
+*.env.*
+.envrc
+
+# Local data & uploads
+data/*.db
+data/*.sqlite*
+uploads/

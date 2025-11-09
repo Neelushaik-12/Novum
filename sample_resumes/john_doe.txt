@@ -1,0 +1,4 @@
+John Doe
+Senior Python Developer
+Experience: 6 years in Python, built APIs with FastAPI, used Pandas for ETL, deployed on GCP with Docker and Cloud Run.
+Skills: python, pandas, docker, gcp, apis

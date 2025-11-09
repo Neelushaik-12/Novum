@@ -1,0 +1,38 @@
+[
+  {
+    "id": "624cff51-24f8-45b1-9b00-f7020e11c76d",
+    "title": "Senior Python Developer",
+    "description": "We need a senior python dev with experience in APIs, Pandas, and cloud deployment. Responsibilities: build backend services, data pipelines, and integrate with ML models.",
+    "skills": [
+      "python",
+      "apis",
+      "pandas",
+      "docker",
+      "gcp"
+    ],
+    "questions": [
+      {
+        "question": "Explain how you'd design a REST API for a resume parsing service.",
+        "type": "text",
+        "max_score": 100
+      },
+      {
+        "question": "What Python library would you use to process CSV and why?",
+        "type": "text",
+        "max_score": 50
+      }
+    ]
+  },
+  {
+    "id": "6d8b4c24-0561-4a9f-a086-09ce9b8217c8",
+    "title": "Data Analyst",
+    "description": "Analyze transactional datasets, create dashboards, and work on data cleaning and feature engineering. Required: SQL, Excel, Python.",
+    "skills": [
+      "sql",
+      "excel",
+      "python",
+      "tableau"
+    ],
+    "questions": null
+  }
+]
