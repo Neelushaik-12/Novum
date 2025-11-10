@@ -1,12 +1,14 @@
 # email_notifier.py
-import os
-from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail
 from typing import Optional
 
-SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
-FROM_EMAIL = os.getenv("NOTIFY_FROM", "no-reply@example.com")
-ADMIN_EMAIL = os.getenv("ADMIN_EMAIL", "hr@example.com")
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+
+from gcp_secrets import get_secret
+
+SENDGRID_API_KEY = get_secret("SENDGRID_API_KEY", required=False)
+FROM_EMAIL = get_secret("NOTIFY_FROM", default="no-reply@example.com", required=False)
+ADMIN_EMAIL = get_secret("ADMIN_EMAIL", default="hr@example.com", required=False)
 
 
 def _send_email(to_email: str, subject: str, html_content: str) -> bool:

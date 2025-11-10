@@ -1,11 +1,14 @@
-import os
-import numpy as np
 import logging
+import os
+
+import numpy as np
 from dotenv import load_dotenv
-from vertexai import init as vertexai_init
-from vertexai.language_models import TextEmbeddingModel
-from vertexai.generative_models import GenerativeModel
 from openai import OpenAI
+from vertexai import init as vertexai_init
+from vertexai.generative_models import GenerativeModel
+from vertexai.language_models import TextEmbeddingModel
+
+from gcp_secrets import get_secret
 
 # Load environment variables
 load_dotenv()
@@ -40,7 +43,7 @@ openai_client = None
 from dotenv import load_dotenv
 load_dotenv()
 
-api_key = os.getenv("OPENAI_API_KEY")
+api_key = get_secret("OPENAI_API_KEY", required=False)
 
 if api_key and api_key.strip():
     try:
@@ -118,7 +121,7 @@ def chat_complete(prompt: str):
     if USE_VERTEX:
         try:
             # ✅ Updated model ID
-            model = GenerativeModel("gemini-1.5-flash-001")  # or "gemini-1.5-pro-001"
+            model = GenerativeModel("gemini-1.5-flash-latest")  # or "gemini-1.5-pro-001"
             response = model.generate_content(prompt)
             if response and hasattr(response, "text") and response.text:
                 return response.text.strip()

@@ -4,14 +4,17 @@ MCP Server for Jobsearch AI
 Model Context Protocol server for connecting with other applications
 """
 
-import os
-import json
 import asyncio
-from typing import Dict, Any, List, Optional
+import json
+import os
+from typing import Any, Dict, List, Optional
+
+import requests
+import uvicorn
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-import uvicorn
-import requests
+
+from gcp_secrets import get_secret
 
 app = FastAPI(title="Jobsearch AI MCP Server", version="1.0.0")
 
@@ -38,6 +41,8 @@ class ToolRegistry:
 
 # Global tool registry
 tool_registry = ToolRegistry()
+
+SERPAPI_KEY = get_secret("SERPAPI_KEY", required=False)
 
 # Register tools
 tool_registry.register_tool(
@@ -100,7 +105,7 @@ async def search_jobs_tool(request_data: Dict[str, Any]):
             raise HTTPException(status_code=400, detail="query is required")
         
         # Use SerpAPI if available
-        api_key = os.getenv("SERPAPI_KEY")
+        api_key = SERPAPI_KEY
         if not api_key:
             return {
                 "ok": False,

@@ -15,14 +15,14 @@ from vector_store import search_index
 from classifier import get_embedding, chat_complete, cosine_similarities
 from dotenv import load_dotenv
 from classifier import build_rag_search_prompt
+from gcp_secrets import get_secret
 
 
-# Load env
+# Load env for local overrides
 load_dotenv()
 
-# Now you can access your variables
-api_key = os.getenv("API_KEY")  # replace API_KEY with your variable
-print(api_key)
+# Secrets
+SERPAPI_KEY = get_secret("SERPAPI_KEY", required=False)
 
 # Import your AI functions (assumes classifier.py in same folder)
 from classifier import get_embedding, cosine_similarities, chat_complete
@@ -623,7 +623,7 @@ def api_match():
         external_jobs = []
         try:
             import requests
-            api_key = os.getenv("SERPAPI_KEY")
+            api_key = SERPAPI_KEY
             if api_key and api_key.strip():
                 # Use LLM to extract better search query from resume
                 from classifier import chat_complete
@@ -975,7 +975,7 @@ def api_rag_search():
         external_jobs = []
         try:
             import requests
-            api_key = os.getenv("SERPAPI_KEY")
+            api_key = SERPAPI_KEY
             if api_key and api_key.strip():
                 from classifier import chat_complete
                 # Extract key terms from resume for better query generation
